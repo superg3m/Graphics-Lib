@@ -2,6 +2,7 @@
 #define TYPES_H
 
 #include <stdint.h>
+#include <string.h>
 
 typedef struct Pixel {
     uint8_t redChannel;
@@ -14,11 +15,11 @@ typedef struct Pixel {
 #define PIXEL_INSTANCE(r, g, b, a) (Pixel){(r), (g), (b), (a)}
 
 // Define the color macros using the PIXEL macro
-#define BLACK_COLOR PIXEL_INSTANCE(20, 20, 20, 255)
-#define RED_COLOR PIXEL_INSTANCE(255, 20, 20, 255)
+#define BLACK_COLOR (Pixel){20, 20, 20, 255}
+#define RED_COLOR (Pixel){255, 20, 20, 255}
 
-#define BLUE_COLOR PIXEL_INSTANCE(20, 20, 255, 255)
-#define GREEN_COLOR PIXEL_INSTANCE(20, 255, 20, 255)
+#define BLUE_COLOR (Pixel){20, 20, 255, 255}
+#define GREEN_COLOR (Pixel){20, 255, 20, 255}
 
 typedef uint8_t uint8;
 typedef uint16_t uint16;
