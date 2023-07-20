@@ -1,7 +1,7 @@
 #include "engine.h"
  
 bool RGB_READABLE = false;
-bool MONOCHROMATIC = true; // If this is true, RGB_READABLE must be false
+bool MONOCHROMATIC = false; // If this is true, RGB_READABLE must be false
 
 void intToCharArray(char* characterArr, int value) {
     // Determine the number of digits in the integer
@@ -30,7 +30,15 @@ Errno save_to_ppm_file(Pixel *pixels, size_t width, size_t height, const char *f
     f = fopen(file_path, "wb");
     if (f == NULL) return_defer(errno);
 
-    fprintf(f, "P6\n%d %d 255\n", width, height); // IF YOU WANT BINARY CHANGE TO - P6 - and then change back to p3
+    const char* ppmFileFormat;
+    if (RGB_READABLE) {
+        ppmFileFormat = "P3\n";
+    } else if (MONOCHROMATIC) {
+        ppmFileFormat = "P6\n";
+    } else {
+        ppmFileFormat = "P6\n";
+    }
+    fprintf(f, "%s %d %d 255\n", ppmFileFormat, width, height); // IF YOU WANT BINARY CHANGE TO - P6 - and then change back to p3
     if (ferror(f)) return_defer(errno);
 
     char str[3][4]; // A 2D array to store the string representations of each channel (3 digits + 1 null terminator)
