@@ -7,6 +7,9 @@
         "string.h": "c",
         "engine.h": "c",
         "type_traits": "c",
-        "stdint.h": "c"
+        "stdint.h": "c",
+        "array": "c",
+        "functional": "c",
+        "ostream": "c"
     }
 }
