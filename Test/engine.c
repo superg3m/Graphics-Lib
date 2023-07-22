@@ -83,41 +83,6 @@ void BrensenhamsLineAlgorithm(uint32_t *pixels, size_t pixels_width, size_t pixe
     return;
   }
 
-#pragma region OtherAlgorithm
-  /*
-  int dx = x1 - x0;
-  int dy = y1 - y0;
-
-  if (dx != 0) {
-    int c = y0 - dy*x0/dx;
-    if (x0 > x1) swap_int(&x0, &x1);
-    for (int x = x0; x <= x1; ++x) {
-      if (0 <= x && x < pixels_width) {
-        int sy0 = dy*x/dx + c;
-        int sy1 = dy*(x + 1)/dx + c;
-        if (sy0 > sy1) swap_int(&sy0, &sy1);
-        for (int y = sy0; y <= sy1; ++y) {
-          if (0 <= y && y < pixels_height) {
-            pixels[y*pixels_width + x] = color;
-          }
-        }
-      }
-    }
-  } else {
-      int x = x1;
-      if (0 <= x && x < (int)pixels_width) {
-        if (y0 > y1) swap_int(&y0, &y1);
-        for (int y = y0; y <= y1; ++y) {
-          if (0 <= y && y < pixels_height) {
-            pixels[y*pixels_width + x] = color;
-          }
-        }
-      }
-  }
-  */
-  
-#pragma endregion
-
   int dx = abs(x1 - x0);
   int xStep = x0 < x1 ? 1 : -1;
 
