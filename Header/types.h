@@ -11,10 +11,8 @@ typedef struct Pixel {
     uint8_t alphaChannel;
 } Pixel;
 
-// Define a helper macro for creating a Pixel instance
-#define PIXEL_INSTANCE(r, g, b, a) (Pixel){(r), (g), (b), (a)}
-
 // Define the color macros using the PIXEL macro
+#define WHITE_COLOR (Pixel){250, 250, 250, 255}
 #define BLACK_COLOR (Pixel){20, 20, 20, 255}
 #define RED_COLOR (Pixel){255, 20, 20, 255}
 
