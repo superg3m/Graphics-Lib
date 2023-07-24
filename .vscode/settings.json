@@ -10,6 +10,13 @@
         "stdint.h": "c",
         "array": "c",
         "functional": "c",
-        "ostream": "c"
+        "ostream": "c",
+        "optional": "c",
+        "system_error": "c",
+        "tuple": "c",
+        "utility": "c",
+        "sdl.h": "c",
+        "cerrno": "c",
+        "cstdint": "c"
     }
 }

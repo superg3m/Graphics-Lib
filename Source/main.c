@@ -1,12 +1,13 @@
-#include "../Header/engine.h"
+#include <assert.h>
 #include <errno.h>
+#include <math.h>
 #include <stdbool.h>
 #include <stdio.h>
-#include <string.h>
-#include <math.h>
-#include <assert.h>
 #include <stdlib.h>
+#include <string.h>
 #include <time.h>
+
+#include "../Header/engine.h"
 
 #define WIDTH 800
 #define HEIGHT 600
@@ -27,16 +28,14 @@ bool checker_example(void) {
       if ((x + y) % 2 == 0) {
         color = RED_COLOR;
       }
-      fill_rect(pixels, WIDTH, HEIGHT, x * CELL_WIDTH, y * CELL_HEIGHT,
-                CELL_WIDTH, CELL_HEIGHT, color);
+      fill_rect(pixels, WIDTH, HEIGHT, x * CELL_WIDTH, y * CELL_HEIGHT, CELL_WIDTH, CELL_HEIGHT, color);
     }
   }
 
   const char *file_path = "../ppm/checker.ppm";
   Errno err = save_to_ppm_file(pixels, WIDTH, HEIGHT, file_path);
   if (err) {
-    fprintf(stderr, "ERROR: could not save file %s: %s\n", file_path,
-            strerror(errno));
+    fprintf(stderr, "ERROR: could not save file %s: %s\n", file_path, strerror(errno));
     return false;
   }
 
@@ -55,20 +54,16 @@ bool circle_example(void) {
       float t = (u + v) / 2;
 
       size_t radius = CELL_WIDTH;
-      if (CELL_HEIGHT < radius)
-        radius = CELL_HEIGHT;
+      if (CELL_HEIGHT < radius) radius = CELL_HEIGHT;
 
-      fill_circle(pixels, WIDTH, HEIGHT, x * CELL_WIDTH + CELL_WIDTH / 2,
-                  y * CELL_HEIGHT + CELL_HEIGHT / 2,
-                  (size_t)lerpf(radius / 8, radius / 2, t), RED_COLOR);
+      fill_circle(pixels, WIDTH, HEIGHT, x * CELL_WIDTH + CELL_WIDTH / 2, y * CELL_HEIGHT + CELL_HEIGHT / 2, (size_t)lerpf(radius / 8, radius / 2, t), RED_COLOR);
     }
   }
 
   const char *file_path = "../ppm/circle.ppm";
   Errno err = save_to_ppm_file(pixels, WIDTH, HEIGHT, file_path);
   if (err) {
-    fprintf(stderr, "ERROR: could not save file %s: %s\n", file_path,
-            strerror(errno));
+    fprintf(stderr, "ERROR: could not save file %s: %s\n", file_path, strerror(errno));
     return false;
   }
   return true;
@@ -76,7 +71,7 @@ bool circle_example(void) {
 
 bool lines_example(void) {
   const char *file_path = "../ppm/lines.ppm";
-  
+
   fill_canvas(pixels, WIDTH, HEIGHT, BLACK_COLOR);
 
   BrensenhamsLineAlgorithm(pixels, WIDTH, HEIGHT, 0, 0, WIDTH, HEIGHT, RED_COLOR);
@@ -94,12 +89,10 @@ bool lines_example(void) {
   BrensenhamsLineAlgorithm(pixels, WIDTH, HEIGHT, 0, HEIGHT / 2, WIDTH, HEIGHT / 2, BLUE_COLOR);
 
   BrensenhamsLineAlgorithm(pixels, WIDTH, HEIGHT, WIDTH / 2, 0, WIDTH / 2, HEIGHT, BLUE_COLOR);
-  
-  
+
   Errno err = save_to_ppm_file(pixels, WIDTH, HEIGHT, file_path);
   if (err) {
-    fprintf(stderr, "ERROR: could not save file %s: %s\n", file_path,
-            strerror(errno));
+    fprintf(stderr, "ERROR: could not save file %s: %s\n", file_path, strerror(errno));
     return false;
   }
   return true;
@@ -115,12 +108,11 @@ bool triangle_example(void) {
   draw_triangle(pixels, WIDTH, HEIGHT, WIDTH / 4, 200, (WIDTH / 4) - 50, HEIGHT / 2, (WIDTH / 4) + 50, HEIGHT / 2, WHITE_COLOR);
 
   draw_triangle(pixels, WIDTH, HEIGHT, WIDTH / 4 * 3, 200, (WIDTH / 4 * 3) - 50, HEIGHT / 2, (WIDTH / 4 * 3) + 50, HEIGHT / 2, WHITE_COLOR);
-  
+
   const char *file_path = "../ppm/triangle.ppm";
   Errno err = save_to_ppm_file(pixels, WIDTH, HEIGHT, file_path);
   if (err) {
-    fprintf(stderr, "ERROR: could not save file %s: %s\n", file_path,
-            strerror(errno));
+    fprintf(stderr, "ERROR: could not save file %s: %s\n", file_path, strerror(errno));
     return false;
   }
   return true;
@@ -130,11 +122,11 @@ int main(void) {
   if (!checker_example()) {
     return -1;
   }
-    
+
   if (!circle_example()) {
     return -1;
   }
-    
+
   if (!lines_example()) {
     return -1;
   }
