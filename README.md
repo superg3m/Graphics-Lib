@@ -8,8 +8,8 @@ This is me messing around with low level pixel data and SDL2
 
 ## Requirements
 
-- g++
-- gdb (if you want to debug)
+- g++ [Download here](https://code.visualstudio.com/docs/languages/cpp)
+- gdb (if you want to debug) [Download here](https://code.visualstudio.com/docs/languages/cpp)
 
 ## Getting Started with PPMs (Source dir)
 
